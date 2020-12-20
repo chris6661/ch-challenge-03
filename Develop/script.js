@@ -1,5 +1,7 @@
 // Assignment code here
-
+var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var num = '0123456789';
+var sym = '!@#$%^&*()';
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
