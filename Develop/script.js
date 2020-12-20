@@ -1,8 +1,20 @@
 // Assignment code here
-var char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-var num = '0123456789';
-var sym = '!@#$%^&*()';
+//prompt for password length
+var plength =prompt("What length would you like your password to be? Please pick from 8-128.")
 
+if (plength < 8 || > 128) {
+  alert("Length must be 8-128 characters!")
+}
+if (plength >=8 && plength <=128) {
+  var cuppercase = confirm("Would you like to use upper case letters?")
+  var clowercase = confirm("Would you like to use lower case letters?")
+  var cnumbers = confirm("Would you like to use numbers?")
+  var csymbols = confirm("Would you like to use special characters?")
+}
+
+if (cuppercase != true && clowercase != true && cnumbers != true && csymbols != true){
+  alert("You must select at least one character type!")
+}
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
