@@ -33,7 +33,7 @@ const randomFunc = {
   symbol: getRandomSymbol,
 }
 
-ducument.getElementById ('clipboard').addEventListener('click', () => {
+document.getElementById ("Your Secure Password").addEventListener("click", () => {
   const textarea = document.createElement('textarea');
   const password = resultEl.innerText;
 
@@ -46,6 +46,41 @@ ducument.getElementById ('clipboard').addEventListener('click', () => {
   textarea.remove();
   alert('Password copied to clipboard.');
 });
+
+function generatePassword(lower, upper, number, symbol, length) {
+  let generatedPassword = '';
+  const typedCont = lower + upper + number + symbol;
+  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter(item => Object.values(item)[0]);
+  
+  for(let i=0; i<length; i+typesCount) {
+    typesArr.forEach(type => {
+      const funcName = Object.keys(type)[0];
+      generatedPassword +=randomFunc[funcname](0);
+    });
+  }
+}
+
+  const finalPassword = generatedPassword.slice(0, length);
+
+
+  function getRandomLower() {
+    return String.fromCharCode(Math.floor(Math.random() * 26) +97);
+  }
+
+  function getRandomUpper() {
+    return String.fromCharCode(Math.floor(Math.random() * 26) +65);
+  }
+
+  function getRandomNumber() {
+    return +String.fromCharCode(Math.floor(Math.random() * 10) +48);
+  }
+
+  function getRandomSymbol() {
+    function getRandomSymbol () {
+      const symbols = '!@#$%^&*(){}[]=<>/'
+      return symbols[Math.floor(Math.random() * symbols.length)];
+  }
+  }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
