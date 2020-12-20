@@ -2,7 +2,7 @@
 //prompt for password length
 var plength =prompt("What length would you like your password to be? Please pick from 8-128.")
 
-if (plength < 8 || > 128) {
+if (plength < 8 || plength > 128) {
   alert("Length must be 8-128 characters!")
 }
 if (plength >=8 && plength <=128) {
@@ -15,6 +15,37 @@ if (plength >=8 && plength <=128) {
 if (cuppercase != true && clowercase != true && cnumbers != true && csymbols != true){
   alert("You must select at least one character type!")
 }
+
+const resultEl = document.getElementById('password');
+
+document.getElementById ('generate').addEventListener('click', () => {
+  const hasLower = clowercase.true;
+  const hasUpper = cuppercase.true;
+  const hasNumber = cnumbers.true;
+  const hasSymbol = csymbols.true;
+  resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+});
+
+const randomFunc = {
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol,
+}
+
+ducument.getElementById ('clipboard').addEventListener('click', () => {
+  const textarea = document.createElement('textarea');
+  const password = resultEl.innerText;
+
+  if(!password) {return;}
+
+  textarea.value = password;
+  document.body.appendChild(textarea);
+  textarea.select(); 
+  document.execCommand('copy');
+  textarea.remove();
+  alert('Password copied to clipboard.');
+});
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
