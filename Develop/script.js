@@ -5,9 +5,9 @@ var confirmLowercase;
 var confirmNumber;
 var confirmSymbol;
   //upper characters
-  var upper = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   //lower characters
-  var lower = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  var lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
   //numeric characters
   var number = ['0','1','2','3','4','5','6','7','8','9'];
   //symbol characters
@@ -15,6 +15,13 @@ var confirmSymbol;
 
   var choices;
   
+  var get = document.querySelector("#generate");
+
+  get.addEventListener("click", function () {
+      ps = generatePassword();
+      document.getElementById("password").placeholder = ps;
+  });
+
   function generatePassword () {
     //user prompts
     enter = parseInt(prompt("How many characters would you like to include in your password? Please pick from 8-128."));
@@ -27,14 +34,15 @@ var confirmSymbol;
   } else {
     confirmUppercase = confirm("Would you like to add uppercase letters?");
     confirmLowercase = confirm("Would you like to use lower case letters?");
-    confrimNumber = confrim("Would you like to add numnbers?");
+    confirmNumber = confirm("Would you like to add numnbers?");
     confirmSymbol = confirm("Would you like to add special characters?");
   };
-  } 
+  
   //if invalid option
-  if (upper != true && lower != true && number != true && symbol != true){
+  if (!confirmUppercase && !confirmLowercase && !confirmNumber && !confirmSymbol){
     alert("You must select at least one character type!")
   }
+
   //user picks 4
   else if (confirmUppercase && confirmLowercase && confirmNumber && confirmSymbol) {
 
@@ -91,17 +99,13 @@ var confirmSymbol;
     for (var i = 0; i < enter; i++) {
       var pickChoices = choices[Math.floor(Math.random() * choices.length)];
       password.push(pickChoices);
-    }
-    var ps = password.join("");
-    UserInput(ps);
+  
+
+  
+  }
+
+    function UserInput(ps) {
       document.getElementById("password").textContent = ps;
-    
-
-    var copy = document.querySelector("#copy");
-    copy.addEventListener("click", function () {
-      copyPassword();
-    });
-
-    function copyPassword() {
-      document.getElementById("password").select();
     }
+
+  }
